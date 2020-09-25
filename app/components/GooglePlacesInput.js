@@ -12,7 +12,7 @@ const GooglePlacesInput = () => {
         console.log(data, details);
       }}
       query={{
-        key: 'AIzaSyDkW9aSffOgA6sgOs1thTBaiv18DqPfms4',
+        key: '',
         language: 'en',
         components: 'country:au',
       }}
