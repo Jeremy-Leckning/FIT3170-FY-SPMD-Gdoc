@@ -1,21 +1,50 @@
-import { StatusBar } from 'expo-status-bar';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Feather from 'react-native-vector-icons/Feather';
+import MoreScreen from './app/screens/MoreScreen';
+import ParkScreen from './app/screens/ParkScreen';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, Text, StyleSheet, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export default function App(){
+  return(
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Welcome"
+      tabBarOptions={{
+        activeTintColor: '#e91e63',
+      }}
+    >
+      <Tab.Screen
+        name="ParkScreen"
+        component={ParkScreen}
+        options={{
+          tabBarLabel: 'Park',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="parking" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="MoreScreen"
+        component={MoreScreen}
+        options={{
+          tabBarLabel: 'More',
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="more-horizontal" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
