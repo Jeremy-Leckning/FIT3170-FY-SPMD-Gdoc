@@ -1,30 +1,15 @@
-import React, { Component } from 'react';
-import { ImageBackground, Text, StyleSheet, View } from "react-native";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import React, { Component } from "react";
+import { Text } from "react-native";
 import { SafeAreaView } from "react-navigation";
-import GooglePlacesInput from "../components/GooglePlacesInput";
-import { ListItem, Avatar, Icon } from "react-native-elements";
 
-class DetailScreen extends Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      search: '',
-    }
-  }
-
-  render(){
-    return(
-      <View><Text>Account Screen</Text></View>
+class DetailScreen extends Component {
+  render() {
+    return (
+      <SafeAreaView>
+        <Text>Details Screen</Text>
+      </SafeAreaView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-  },
-});
 
 export default DetailScreen;

@@ -1,18 +1,12 @@
 import React, { Component } from "react";
 import {
-  ImageBackground,
   Text,
   StyleSheet,
   View,
-  ScrollView,
-  TouchableWithoutFeedback,
-  Keyboard,
   TouchableOpacity
 } from "react-native";
 import { SearchBar, Card } from "react-native-elements";
-import { SafeAreaView } from "react-navigation";
-import MapView, { AnimatedRegion, MarkerAnimated } from "react-native-maps";
-import GooglePlacesInput from "../components/GooglePlacesInput";
+import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
 import carParkData from "../data/carparkLocation";
 
