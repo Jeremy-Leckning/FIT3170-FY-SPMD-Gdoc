@@ -4,15 +4,8 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import { SafeAreaView } from "react-navigation";
 import GooglePlacesInput from "../components/GooglePlacesInput";
 import { ListItem, Avatar, Icon } from "react-native-elements";
-import MainMoreScreen from './MainMoreScreen';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import AccountScreen from './AccountScreen';
-import SettingScreen from './SettingScreen';
 
-const Stack = createStackNavigator();
-
-class MoreScreen extends Component{
+class MainMoreScreen extends Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -22,11 +15,20 @@ class MoreScreen extends Component{
 
   render(){
     return(
-      <Stack.Navigator>
-        <Stack.Screen name="More" component={MainMoreScreen} />
-        <Stack.Screen name="Account" component={AccountScreen} />
-        <Stack.Screen name="Settings" component={SettingScreen} />
-      </Stack.Navigator>
+      <SafeAreaView>
+        <ListItem bottomDivider onPress={() => {console.log("pressed account"); this.props.navigation.navigate('Account')}}>
+          <Icon name = 'account-circle'/>
+          <ListItem.Content>
+            <ListItem.Title>Account</ListItem.Title>
+          </ListItem.Content>
+        </ListItem>
+        <ListItem bottomDivider onPress={() => {console.log("pressed settings"); this.props.navigation.navigate('Settings')}}>
+          <Icon name = 'settings'/>
+          <ListItem.Content>
+            <ListItem.Title>Settings</ListItem.Title>
+          </ListItem.Content>
+        </ListItem>
+      </SafeAreaView>
     );
   }
 }
@@ -38,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MoreScreen;
+export default MainMoreScreen;
