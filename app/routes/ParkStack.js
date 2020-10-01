@@ -11,7 +11,9 @@ class ParkStack extends Component {
     return (
       <Stack.Navigator>
         <Stack.Screen options={{headerShown: false}}  name="Park" component={ParkScreen} />
-        <Stack.Screen name="Details" component={BookingScreen} />
+        <Stack.Screen name="Details" component={DetailScreen} />
+        <Stack.Screen name="Book" component={BookingScreen} />
+
       </Stack.Navigator>
     );
   }
