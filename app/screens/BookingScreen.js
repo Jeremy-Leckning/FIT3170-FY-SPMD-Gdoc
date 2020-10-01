@@ -166,14 +166,18 @@ class BookingScreen extends Component {
           }}
         >
           <Button
-            style={{ padding: 20 }}
+            style={{ paddingVertical: 10, paddingHorizontal: 20 }}
             type="clear"
-            title={<Text>Arriving{"\n"}Today, 16:20</Text>}
+            title={
+              <Text style={{ fontWeight: "bold" }}>
+                Arriving{"\n"}
+                <Text style={{ fontWeight: "normal" }}>Today, 16:23</Text>
+              </Text>
+            }
           />
           <View
             style={{
-              paddingVertical: 20,
-              margin: 12,
+              paddingTop: 25,
             }}
           >
             <Text
@@ -181,86 +185,115 @@ class BookingScreen extends Component {
                 textAlign: "center",
                 color: "white",
                 fontWeight: "bold",
-                backgroundColor: "blue",
-                borderRadius: 20,
+                backgroundColor: "rgb(19, 111, 209)",
+                borderColor: "rgb(19, 111, 209)",
+                borderRadius: 15,
                 borderWidth: 1,
                 overflow: "hidden",
-                padding: 10,
+                padding: 8,
+                fontWeight: "bold",
+                fontSize: 15,
               }}
             >
-              Duration
+              2h 3m
             </Text>
           </View>
           <Button
-            style={{ padding: 20 }}
+            style={{ paddingVertical: 10, paddingHorizontal: 20 }}
             type="clear"
-            title={<Text>Leaving{"\n"}Today, 16:23</Text>}
+            title={
+              <Text style={{ fontWeight: "bold" }}>
+                Leaving{"\n"}
+                <Text style={{ fontWeight: "normal" }}>Today, 16:23</Text>
+              </Text>
+            }
           />
         </View>
+        {/* ----------------------------------- Vehicle Info  -----------------------------------*/}
         <View
           style={{
             borderBottomColor: "gray",
             borderBottomWidth: 1,
           }}
         >
-          <Text style={{ paddingHorizontal: 30, paddingVertical: 10 }}>
+          <Text
+            style={{
+              paddingHorizontal: 15,
+              paddingVertical: 10,
+              fontWeight: "bold",
+            }}
+          >
             Vehicle
           </Text>
           <View
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              paddingHorizontal: 30,
-              paddingVertical: 10,
+              paddingHorizontal: 15,
+              paddingVertical: 15,
             }}
           >
-            <Text>Plate Number</Text>
-            <Text>B12UBGS</Text>
+            <Text style={{ textAlign: "left" }}>Plate Number</Text>
+            <Text style={{ textAlign: "left" }}>B12UBGS</Text>
           </View>
           <View
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              paddingHorizontal: 30,
+              paddingHorizontal: 15,
               paddingVertical: 10,
             }}
           >
-            <Text>Type</Text>
-            <Text>Sedan</Text>
+            <Text style={{ textAlign: "left" }}>Type</Text>
+            <Text style={{ justifyContent: "left" }}>Sedan</Text>
           </View>
         </View>
+
+        {/* ----------------------------------- Payment Method  -----------------------------------*/}
+
         <View
           style={{
             borderBottomColor: "gray",
             borderBottomWidth: 1,
             flexDirection: "row",
             justifyContent: "space-between",
+            paddingVertical: 15,
           }}
         >
-          <Text style={{ paddingHorizontal: 30, paddingVertical: 10 }}>
-            Payment Method
-          </Text>
-          <Text style={{ paddingHorizontal: 30, paddingVertical: 10 }}>
-            Visa - 8378
-          </Text>
-        </View>
-        <View
-          style={{
-            borderBottomColor: "gray",
-            borderBottomWidth: 1,
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-        >
-          <Text style={{ paddingHorizontal: 30, paddingVertical: 10 }}>
-            Price
-          </Text>
-          <Text style={{ paddingHorizontal: 30, paddingVertical: 10 }}>
-            AUD 10.00
-          </Text>
+          <Text style={{ paddingHorizontal: 15 }}>Payment Method</Text>
+          <Text style={{ paddingHorizontal: 15 }}>Visa - 8378</Text>
         </View>
 
-        <Button title="Book Now" />
+        {/* ----------------------------------- Price  -----------------------------------*/}
+
+        <View
+          style={{
+            borderBottomColor: "gray",
+            borderBottomWidth: 1,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            paddingVertical: 15,
+          }}
+        >
+          <Text style={{ paddingHorizontal: 15 }}>Price</Text>
+          <Text style={{ paddingHorizontal: 15 }}>AUD 10.00</Text>
+        </View>
+
+        {/* ----------------------------------- Book Now  -----------------------------------*/}
+
+        <Button
+          style={{ padding: 15 }}
+          buttonStyle={{
+            borderRadius: 15,
+
+            backgroundColor: "rgb(155,195,255)",
+          }}
+          title={
+            <Text style={{ weightcolor: "black", fontWeight: "bold" }}>
+              Book now
+            </Text>
+          }
+        />
       </SafeAreaView>
     );
   }

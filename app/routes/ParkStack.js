@@ -10,9 +10,8 @@ class ParkStack extends Component {
   render() {
     return (
       <Stack.Navigator>
-                  <Stack.Screen name="Details" component={BookingScreen} />
-
         <Stack.Screen options={{headerShown: false}}  name="Park" component={ParkScreen} />
+        <Stack.Screen name="Details" component={BookingScreen} />
       </Stack.Navigator>
     );
   }
