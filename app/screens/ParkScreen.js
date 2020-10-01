@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  TouchableOpacity
-} from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { SearchBar, Card } from "react-native-elements";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
@@ -109,7 +104,12 @@ class ParkScreen extends Component {
             }}
           >
             {this.state.currentMarker && (
-              <TouchableOpacity onPress={() => {this.props.navigation.navigate('Details');console.log("clicking card")}}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.props.navigation.navigate("Details");
+                  console.log("clicking card");
+                }}
+              >
                 <Card>
                   <Card.Title>{this.state.currentMarker.title}</Card.Title>
                 </Card>

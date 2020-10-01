@@ -5,6 +5,7 @@ import React from "react";
 import MoreStack from "./MoreStack";
 import ParkStack from "./ParkStack";
 import ProfileStack from "./ProfileStack";
+import DetailStack from "./DetailStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -34,6 +35,17 @@ function MyTabs() {
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="DetailStack"
+        component={DetailStack}
+        options={{
+          tabBarLabel: "Details",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="details" color={color} size={size} />
           ),
         }}
       />
