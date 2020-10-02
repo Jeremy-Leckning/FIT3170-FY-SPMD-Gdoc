@@ -150,11 +150,11 @@ class DetailScreen extends Component {
           <View style={styles.spaceHolder} />
           <View style={styles.spaceHolder} />
 
-          <Text style={{ color: "grey", fontSize: 14, marginBottom: "4%" }}>
+          {/* <Text style={{ color: "grey", fontSize: 14, marginBottom: "4%" }}>
             GATE IN/OUT
-          </Text>
+          </Text> */}
 
-          <View
+          {/* <View
             style={{
               flex: 1,
               flexDirection: "row",
@@ -165,7 +165,7 @@ class DetailScreen extends Component {
             <Text style={{ color: "blue", fontSize: 16 }}> South </Text>
             <Text style={{ color: "blue", fontSize: 16 }}> East </Text>
             <Text style={{ color: "blue", fontSize: 16 }}> West </Text>
-          </View>
+          </View> */}
 
           <View style={styles.spaceHolder} />
           <View style={styles.spaceHolder} />
