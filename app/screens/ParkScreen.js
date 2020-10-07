@@ -82,7 +82,7 @@ class ParkScreen extends Component {
           >
             {carParkData.map((marker) => (
               <Marker
-                onSelect={() => {
+                onPress={() => {
                   console.log("selecting " + marker.title);
                   this.setState({ currentMarker: marker });
                 }}
