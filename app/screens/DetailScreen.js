@@ -13,6 +13,9 @@ import { SafeAreaView } from "react-navigation";
 import { ScrollView } from "react-native-gesture-handler";
 
 class DetailScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <SafeAreaView style={{ marginLeft: "5%", marginRight: "8%" }}>
@@ -174,7 +177,9 @@ class DetailScreen extends Component {
             style={styles.button}
             title="Next"
             onPress={() => {
-              this.props.navigation.navigate("Book");
+              this.props.navigation.navigate("Book", {
+                parkingData: this.props.route.params.parkingData,
+              });
             }}
           >
             <Text

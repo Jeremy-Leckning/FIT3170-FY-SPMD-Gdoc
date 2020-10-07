@@ -106,7 +106,9 @@ class ParkScreen extends Component {
             {this.state.currentMarker && (
               <TouchableOpacity
                 onPress={() => {
-                  this.props.navigation.navigate("Details");
+                  this.props.navigation.navigate("Details", {
+                    parkingData: this.state.currentMarker,
+                  });
                   console.log("clicking card");
                 }}
               >
