@@ -7,19 +7,21 @@ import { Divider, Icon } from "react-native-elements";
 class BookingScreen extends Component {
   render() {
     return (
-      <SafeAreaView style={{ backgroundColor: "white", padding: 10 }}>
+      <SafeAreaView style={{ backgroundColor: "white", padding: "3%" }}>
         {/* ----------------------------------- Parking Info  -----------------------------------*/}
         <Text
           style={{
             fontSize: 12,
             color: "gray",
             fontWeight: "500",
-            paddingVertical: 5,
+            paddingVertical: "1%",
           }}
         >
           Parking Type
         </Text>
-        <Text style={{ fontSize: 22, fontWeight: "bold", paddingVertical: 5 }}>
+        <Text
+          style={{ fontSize: 22, fontWeight: "bold", paddingVertical: "1%" }}
+        >
           Parking Name
         </Text>
         <Text
@@ -27,24 +29,24 @@ class BookingScreen extends Component {
             fontSize: 12,
             color: "gray",
             fontWeight: "500",
-            paddingVertical: 5,
+            paddingVertical: "1%",
           }}
         >
           Parking Location
         </Text>
-        <View style={{ flexDirection: "row", paddingVertical: 5 }}>
+        <View style={{ flexDirection: "row", paddingVertical: "1%" }}>
           <Icon
-            style={{ paddingHorizontal: 10 }}
+            style={{ paddingHorizontal: "2%" }}
             name="location-arrow"
             type="font-awesome"
           />
-          <Text style={{ paddingVertical: 3 }}>Parking Distance</Text>
+          <Text style={{ paddingVertical: "1%" }}>Parking Distance</Text>
           <Icon
-            style={{ paddingHorizontal: 10 }}
+            style={{ paddingHorizontal: "2%" }}
             name="dollar"
             type="foundation"
           />
-          <Text style={{ paddingVertical: 3 }}>Parking Price</Text>
+          <Text style={{ paddingVertical: "1%" }}>Parking Price</Text>
         </View>
 
         {/* ----------------------------------- Parking Spaces  -----------------------------------*/}
@@ -55,8 +57,8 @@ class BookingScreen extends Component {
         <View
           style={{
             backgroundColor: "rgb(255,248,230)",
-            padding: 5,
-            marginTop: 10,
+            padding: "1%",
+            marginTop: "2%",
             borderRadius: 10,
             borderWidth: 1,
             borderColor: "#FFCE49",
@@ -66,16 +68,16 @@ class BookingScreen extends Component {
             style={{
               textAlign: "left",
               color: "#000",
-              padding: 10,
+              padding: "2%",
             }}
           >
             Today we have x lot available, don't forget to select before booking
           </Text>
         </View>
-        <ScrollView horizontal style={{ paddingVertical: 20 }}>
+        <ScrollView horizontal style={{ paddingVertical: "4%" }}>
           <Button
             style={{
-              padding: 5,
+              padding: "5%",
               margin: 5,
               borderRadius: 15,
               borderWidth: 1,
@@ -91,7 +93,7 @@ class BookingScreen extends Component {
           />
           <Button
             style={{
-              padding: 5,
+              padding: "5%",
               margin: 5,
               borderRadius: 15,
               borderWidth: 1,
@@ -107,7 +109,7 @@ class BookingScreen extends Component {
           />
           <Button
             style={{
-              padding: 5,
+              padding: "5%",
               margin: 5,
               borderRadius: 15,
               borderWidth: 1,
@@ -123,7 +125,7 @@ class BookingScreen extends Component {
           />
           <Button
             style={{
-              padding: 5,
+              padding: "5%",
               margin: 5,
               borderRadius: 15,
               borderWidth: 1,
@@ -139,7 +141,7 @@ class BookingScreen extends Component {
           />
           <Button
             style={{
-              padding: 5,
+              padding: "5%",
               margin: 5,
               borderRadius: 15,
               borderWidth: 1,
@@ -166,7 +168,7 @@ class BookingScreen extends Component {
           }}
         >
           <Button
-            style={{ paddingVertical: 10, paddingHorizontal: 20 }}
+            style={{ paddingVertical: "5%", paddingHorizontal: "8%" }}
             type="clear"
             title={
               <Text style={{ fontWeight: "bold" }}>
@@ -177,7 +179,7 @@ class BookingScreen extends Component {
           />
           <View
             style={{
-              paddingTop: 25,
+              paddingTop: "5%",
             }}
           >
             <Text
@@ -190,7 +192,7 @@ class BookingScreen extends Component {
                 borderRadius: 15,
                 borderWidth: 1,
                 overflow: "hidden",
-                padding: 8,
+                padding: "2%",
                 fontWeight: "bold",
                 fontSize: 15,
               }}
@@ -199,7 +201,7 @@ class BookingScreen extends Component {
             </Text>
           </View>
           <Button
-            style={{ paddingVertical: 10, paddingHorizontal: 20 }}
+            style={{ paddingVertical: "5%", paddingHorizontal: "8%" }}
             type="clear"
             title={
               <Text style={{ fontWeight: "bold" }}>
@@ -218,8 +220,8 @@ class BookingScreen extends Component {
         >
           <Text
             style={{
-              paddingHorizontal: 15,
-              paddingVertical: 10,
+              paddingHorizontal: "2%",
+              paddingVertical: "2%",
               fontWeight: "bold",
             }}
           >
@@ -229,8 +231,8 @@ class BookingScreen extends Component {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              paddingHorizontal: 15,
-              paddingVertical: 15,
+              paddingHorizontal: "2%",
+              paddingVertical: "4%",
             }}
           >
             <Text style={{ textAlign: "left" }}>Plate Number</Text>
@@ -240,8 +242,8 @@ class BookingScreen extends Component {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              paddingHorizontal: 15,
-              paddingVertical: 10,
+              paddingHorizontal: "2%",
+              paddingVertical: "4%",
             }}
           >
             <Text style={{ textAlign: "left" }}>Type</Text>
@@ -257,11 +259,11 @@ class BookingScreen extends Component {
             borderBottomWidth: 1,
             flexDirection: "row",
             justifyContent: "space-between",
-            paddingVertical: 15,
+            paddingVertical: "5%",
           }}
         >
-          <Text style={{ paddingHorizontal: 15 }}>Payment Method</Text>
-          <Text style={{ paddingHorizontal: 15 }}>Visa - 8378</Text>
+          <Text style={{ paddingHorizontal: "2%" }}>Payment Method</Text>
+          <Text style={{ paddingHorizontal: "2%" }}>Visa - 8378</Text>
         </View>
 
         {/* ----------------------------------- Price  -----------------------------------*/}
@@ -272,17 +274,17 @@ class BookingScreen extends Component {
             borderBottomWidth: 1,
             flexDirection: "row",
             justifyContent: "space-between",
-            paddingVertical: 15,
+            paddingVertical: "5%",
           }}
         >
-          <Text style={{ paddingHorizontal: 15 }}>Price</Text>
-          <Text style={{ paddingHorizontal: 15 }}>AUD 10.00</Text>
+          <Text style={{ paddingHorizontal: "2%" }}>Price</Text>
+          <Text style={{ paddingHorizontal: "2%" }}>AUD 10.00</Text>
         </View>
 
         {/* ----------------------------------- Book Now  -----------------------------------*/}
 
         <Button
-          style={{ padding: 15 }}
+          style={{ padding: "5%" }}
           buttonStyle={{
             borderRadius: 15,
 
