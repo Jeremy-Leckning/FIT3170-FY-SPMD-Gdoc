@@ -293,7 +293,7 @@ class BookingScreen extends Component {
               }}
             >
               <Text style={{ textAlign: "left" }}>Type</Text>
-              <Text style={{ justifyContent: "left" }}>Sedan</Text>
+              <Text style={{ textAlign: "left" }}>Sedan</Text>
             </View>
           </View>
 
