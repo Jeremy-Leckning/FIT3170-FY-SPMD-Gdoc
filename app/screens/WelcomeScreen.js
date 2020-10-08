@@ -1,18 +1,6 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Text,
-  Image,
-  StyleSheet,
-  StatusBar,
-  View,
-  flexDirection,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, flexDirection } from "react-native";
 import { SafeAreaView } from "react-navigation";
-import { ScrollView } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { StackActions, NavigationActions } from "@react-navigation/native";
 
 class ProgressBar extends Component {
   render() {
