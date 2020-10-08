@@ -11,17 +11,36 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import { ScrollView } from "react-native-gesture-handler";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 class DetailScreen extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      parkingData: this.props.route.params.parkingData,
+      favorite: false,
+      image: require("../assets/senayan.png"),
+      imageSW1: require("../assets/sw1_carpark.jpg"),
+      imageWestOne: require("../assets/WestOne_parking.jpg"),
+    };
   }
+
   render() {
+    let imageParking;
+    if (this.state.parkingData.title == "SW1 Carpark") {
+      imageParking = (
+        <Image style={styles.image} source={this.state.imageSW1} />
+      );
+    } else {
+      imageParking = (
+        <Image style={styles.image} source={this.state.imageWestOne} />
+      );
+    }
     return (
       <SafeAreaView style={{ marginLeft: "5%", marginRight: "8%" }}>
         <ScrollView>
-          <Image source={require("../assets/senayan.png")} />
-
+          {imageParking}
           <View>
             <View style={styles.row_container}>
               <Text
@@ -32,7 +51,7 @@ class DetailScreen extends Component {
                   fontWeight: "bold",
                 }}
               >
-                Parking type
+                {this.state.parkingData.parkingType}
               </Text>
 
               <Image
@@ -48,7 +67,7 @@ class DetailScreen extends Component {
                 fontWeight: "bold",
               }}
             >
-              Parking Name
+              {this.state.parkingData.title}
             </Text>
             <Text
               style={{
@@ -57,12 +76,10 @@ class DetailScreen extends Component {
                 color: "grey",
               }}
             >
-              Parking Location
+              {this.state.parkingData.location}
             </Text>
           </View>
-
           <View style={styles.spaceHolder} />
-
           <View style={styles.row_container}>
             <Image
               style={{ marginLeft: "1%" }}
@@ -88,7 +105,7 @@ class DetailScreen extends Component {
                 fontWeight: "bold",
               }}
             >
-              Rp
+              $
             </Text>
 
             <Text
@@ -98,25 +115,32 @@ class DetailScreen extends Component {
                 color: "darkblue",
               }}
             >
-              Price/Hours
+              {this.state.parkingData.price}
             </Text>
 
-            <Image
+            {/* <Image
               style={{ marginLeft: "auto" }}
               source={require("../assets/Star.png")}
-            />
+            /> */}
+
+            <View style={{ marginLeft: "auto" }}>
+              <Icon
+                name={this.state.favorite ? "star" : "star-o"}
+                color={this.state.favorite ? "#F44336" : "rgb(50, 50, 50)"}
+                size={30}
+                onPress={() =>
+                  this.setState({ favorite: !this.state.favorite })
+                }
+              />
+            </View>
           </View>
-
           <View style={styles.spaceHolder} />
-
           <Text style={{ color: "grey", fontSize: 14, marginBottom: "4%" }}>
             ADDRESS
           </Text>
-
           <View style={styles.row_container}>
             <Text style={{ color: "darkblue", width: "60%", fontSize: 16 }}>
-              Jl. Asia Afrika No.Lot. 19, RT.1/RW.3, Gelora, Tanah Abang, Kota
-              Jakarta Pusat.
+              {this.state.parkingData.address}
             </Text>
 
             <Image
@@ -128,18 +152,14 @@ class DetailScreen extends Component {
               source={require("../assets/Maps.png")}
             />
           </View>
-
           <Text style={{ color: "blue", fontSize: 16, marginTop: "3%" }}>
             Direction
           </Text>
-
           <View style={styles.spaceHolder} />
           <View style={styles.spaceHolder} />
-
           <Text style={{ color: "grey", fontSize: 14, marginBottom: "4%" }}>
             OPERATION
           </Text>
-
           <Text
             style={{
               fontSize: 16,
@@ -149,14 +169,11 @@ class DetailScreen extends Component {
           >
             Open • 24 Hours
           </Text>
-
           <View style={styles.spaceHolder} />
           <View style={styles.spaceHolder} />
-
           {/* <Text style={{ color: "grey", fontSize: 14, marginBottom: "4%" }}>
             GATE IN/OUT
           </Text> */}
-
           {/* <View
             style={{
               flex: 1,
@@ -169,10 +186,6 @@ class DetailScreen extends Component {
             <Text style={{ color: "blue", fontSize: 16 }}> East </Text>
             <Text style={{ color: "blue", fontSize: 16 }}> West </Text>
           </View> */}
-
-          <View style={styles.spaceHolder} />
-          <View style={styles.spaceHolder} />
-
           <TouchableOpacity
             style={styles.button}
             title="Next"
@@ -193,6 +206,10 @@ class DetailScreen extends Component {
               Next
             </Text>
           </TouchableOpacity>
+          <View style={styles.spaceHolder} />
+          <View style={styles.spaceHolder} />
+          <View style={styles.spaceHolder} />
+          <View style={styles.spaceHolder} />
         </ScrollView>
       </SafeAreaView>
     );
@@ -215,8 +232,14 @@ const styles = StyleSheet.create({
     width: "60%",
     height: "5%",
     borderRadius: 50,
-    marginBottom: 30,
+    marginBottom: "20%",
     marginLeft: "15%",
+  },
+
+  image: {
+    marginTop: "2%",
+    height: "20%",
+    width: "100%",
   },
 });
 

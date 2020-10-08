@@ -4,6 +4,7 @@ let carParkData = [
     title: "SW1 Carpark",
     description: "description",
     parkingType: "Off Street Parking",
+    location: "Clayton, Melbourne",
     address: "Monash University, 38 Innovation Walk, Clayton VIC 3800",
     price: "2",
     parkingSpaces: [
@@ -20,6 +21,7 @@ let carParkData = [
     title: "West One",
     description: "description",
     parkingType: "Off Street Parking",
+    location: "Clayton, Melbourne",
     address: "3 Alliance Ln, Clayton VIC 3800",
     price: "2",
     parkingSpaces: [
