@@ -6,6 +6,8 @@ import MoreStack from "./MoreStack";
 import ParkStack from "./ParkStack";
 import ProfileStack from "./ProfileStack";
 import DetailStack from "./DetailStack";
+import HistoryScreen from "../screens/HistoryScreen";
+import FavouriteScreen from "../screens/FavouriteScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,7 +29,34 @@ function MyTabs() {
           ),
         }}
       />
-
+      <Tab.Screen
+        name="History"
+        component={HistoryScreen}
+        options={{
+          tabBarLabel: "My Booking",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="book-open"
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Favourite"
+        component={FavouriteScreen}
+        options={{
+          tabBarLabel: "Favourites",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="star-outline"
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      />
       <Tab.Screen
         name="ProfileStack"
         component={ProfileStack}
@@ -35,17 +64,6 @@ function MyTabs() {
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="DetailStack"
-        component={DetailStack}
-        options={{
-          tabBarLabel: "Details",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="details" color={color} size={size} />
           ),
         }}
       />

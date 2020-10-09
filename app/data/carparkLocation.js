@@ -15,6 +15,7 @@ let carParkData = [
       { parkingNumber: "P4", availability: "1/1" },
       { parkingNumber: "P5", availability: "1/1" },
     ],
+    parkingPicture: "../assets/sw1_carpark.jpg",
   },
   {
     coordinate: { latitude: -37.90833, longitude: 145.12968 },
