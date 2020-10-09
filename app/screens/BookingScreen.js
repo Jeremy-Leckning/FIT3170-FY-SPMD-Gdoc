@@ -21,6 +21,7 @@ class BookingScreen extends Component {
       bookingStartDate: startTime,
       bookingEndDate: endTime,
       parkingData: this.props.route.params.parkingData,
+      parkingDistance: this.props.route.params.parkingDistance,
       currentSelectedParking: null,
       buttonColor: "white",
     };
@@ -120,7 +121,9 @@ class BookingScreen extends Component {
               name="location-arrow"
               type="font-awesome"
             />
-            <Text style={{ paddingVertical: "1%" }}>Parking Distance</Text>
+            <Text style={{ paddingVertical: "1%" }}>
+              {this.state.parkingDistance}km
+            </Text>
             <Icon
               style={{ paddingHorizontal: "2%" }}
               name="dollar"

@@ -19,6 +19,7 @@ class DetailScreen extends Component {
 
     this.state = {
       parkingData: this.props.route.params.parkingData,
+      parkindDistance: this.props.route.params.parkingDistance,
       favorite: false,
       image: require("../assets/senayan.png"),
       imageSW1: require("../assets/sw1_carpark.jpg"),
@@ -94,7 +95,7 @@ class DetailScreen extends Component {
                 fontWeight: "bold",
               }}
             >
-              Distance m
+              {this.state.parkindDistance}km
             </Text>
 
             <Text
@@ -192,6 +193,7 @@ class DetailScreen extends Component {
             onPress={() => {
               this.props.navigation.navigate("Book", {
                 parkingData: this.props.route.params.parkingData,
+                parkingDistance: this.props.route.params.parkingDistance,
               });
             }}
           >
