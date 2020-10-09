@@ -145,7 +145,7 @@ class ParkScreen extends Component {
               </TouchableOpacity>
             )}
           </View>
-          <View style={{ position: "absolute", top: 0 }}>
+          <View style={{ position: "absolute", top: 25 }}>
             <SearchBar
               platform="ios"
               containerStyle={{

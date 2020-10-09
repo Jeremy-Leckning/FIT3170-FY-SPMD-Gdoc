@@ -222,7 +222,13 @@ class PreferenceScreen extends Component {
           <View style={{ alignItems: "center", paddingVertical: "30%" }}>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.props.navigation.navigate("Park")}
+              onPress={() => {
+                this.props.navigation.navigate("MyTabs");
+                this.props.navigation.reset({
+                  index: 0,
+                  routes: [{ name: "MyTabs" }],
+                });
+              }}
             >
               <Text>Next</Text>
             </TouchableOpacity>

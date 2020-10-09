@@ -9,11 +9,9 @@ import MoreStack from "./MoreStack";
 import ParkStack from "./ParkStack";
 import ProfileStack from "./ProfileStack";
 import DetailStack from "./DetailStack";
-import MyTabs from "./BottomTabNavigator";
+import BottomTabNavigator from "./BottomTabNavigator";
 
 const Stack = createStackNavigator();
-
-const Tab = createBottomTabNavigator();
 
 function MainStack() {
   return (
@@ -28,7 +26,11 @@ function MainStack() {
         name="Preference"
         component={PreferenceScreen}
       />
-      <Stack.Screen name="Park" component={MyTabs} />
+      <Stack.Screen
+        name="MyTabs"
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }
