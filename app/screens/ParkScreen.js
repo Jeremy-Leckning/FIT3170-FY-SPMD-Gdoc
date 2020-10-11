@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity, Image } from "react-native";
 import { SearchBar, Card } from "react-native-elements";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
@@ -108,9 +108,17 @@ class ParkScreen extends Component {
                   this.setState({ currentMarker: null });
                 }}
                 coordinate={marker.coordinate}
-                title={marker.title}
-                description={marker.description}
-              />
+                // title={marker.title}
+                // description={marker.description}
+              >
+                <View
+                  style={{ backgroundColor: "white", 
+                  width: this.state.currentMarker==marker?200:100, 
+                  height: this.state.currentMarker==marker?60:30 }}
+                >
+                  <Text style={{textAlign: 'center'}}>{marker.title}</Text>
+                </View>
+              </Marker>
             ))}
           </MapView>
           <View
@@ -140,7 +148,27 @@ class ParkScreen extends Component {
                 }}
               >
                 <Card>
-                  <Card.Title>{this.state.currentMarker.title}</Card.Title>
+                  <View style={{ flexDirection: "row" }}>
+                    <Image
+                      style={styles.image}
+                      source={require("../assets/sw1_carpark.jpg")}
+                    />
+                    <View>
+                      <Card.Title>{this.state.currentMarker.title}</Card.Title>
+                      <View
+                        style={{
+                          paddingLeft: 50,
+                          // flexDirection: "row",
+                        }}
+                      >
+                        <Text style={{ color: "green" }}>
+                          {this.state.currentMarker.parkingRating}
+                        </Text>
+                        <Text></Text>
+                        <Text>{this.state.currentMarker.parkingType}</Text>
+                      </View>
+                    </View>
+                  </View>
                 </Card>
               </TouchableOpacity>
             )}
@@ -189,6 +217,10 @@ const styles = StyleSheet.create({
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  image: {
+    height: 80,
+    width: 100,
   },
 });
 

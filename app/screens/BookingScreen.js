@@ -5,6 +5,8 @@ import { SafeAreaView } from "react-navigation";
 import { Divider, Icon } from "react-native-elements";
 import Modal from "react-native-modal";
 // import deepDiffer from "react-native/lib/deepDiffer";
+import DateTimePicker from "@react-native-community/datetimepicker";
+
 var diff = require("deep-diff");
 const startTime = new Date();
 const endTime = new Date();
@@ -18,23 +20,90 @@ class BookingScreen extends Component {
       vehicleNumber: "ABC123",
       paymentMethod: "Visa-8378",
       totalPrice: 10,
-      bookingStartDate: startTime,
-      bookingEndDate: endTime,
+      arrivingDate: new Date(),
+      leavingDate: new Date(),
       parkingData: this.props.route.params.parkingData,
       parkingDistance: this.props.route.params.parkingDistance,
       currentSelectedParking: null,
       buttonColor: "white",
+      date: new Date(),
+      pickingArriving: false,
+      pickingLeaving: false,
+      datePickerMode: "date",
+      showDatePicker: false,
     };
   }
+
+  onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || this.state.arrivingDate;
+    if (this.state.pickingArriving) {
+      this.setState({ arrivingDate: currentDate }, () => {
+        if (this.state.leavingDate < this.state.arrivingDate) {
+          this.setState({ leavingDate: this.state.arrivingDate });
+        }
+      });
+    }
+    if (this.state.pickingLeaving) {
+      this.setState({ leavingDate: currentDate }, () => {
+        if (this.state.leavingDate < this.state.arrivingDate) {
+          this.setState({ arrivingDate: this.state.leavingDate });
+        }
+      });
+    }
+  };
+  showMode = (currentMode) => {
+    this.setState({ showDatePicker: true });
+    this.setState({ datePickerMode: currentMode });
+  };
+
+  showDatepicker = (dateType) => {
+    if (dateType == "Arriving") {
+      this.setState({ pickingArriving: true });
+    }
+    if (dateType == "Leaving") {
+      this.setState({ pickingLeaving: true });
+    }
+    this.showMode("date");
+  };
+
+  showTimepicker = () => {
+    this.showMode("time");
+  };
+
+  closeTimePicker = () => {
+    this.showMode("date");
+    this.setState({ showDatePicker: false });
+    this.setState({ pickingArriving: false, pickingLeaving: false });
+    console.log("Arriving" + this.state.arrivingDate);
+    console.log("Leaving" + this.state.leavingDate);
+  };
+
   toggleModal = () => {
     this.setState({ isModalVisible: !this.state.isModalVisible });
   };
 
+  calculateDateDiff = () => {
+    let start = this.state.arrivingDate;
+    let end = this.state.leavingDate;
+    let elapsed = end - start;
+    console.log(elapsed);
+    let difference = new Date(elapsed);
+
+    // let diff_days = difference.getUTC();
+    let diff_hours = difference.getUTCHours();
+    let diff_mins = difference.getUTCMinutes();
+    // if (diff_days == 0) {
+    //   diff_days = "";
+    // } else {
+    //   diff_days = diff_days + "d ";
+    // }
+    return diff_hours + "h" + " " + diff_mins + "m";
+  };
   render() {
     return (
       <SafeAreaView style={{ backgroundColor: "white", padding: "3%" }}>
         {/* ----------------------------------- Parking Info  -----------------------------------*/}
-        <View>
+        <ScrollView>
           {/* -------------------------------- Modal ----------------------------------------*/}
           <Modal backdropColor={"black"} isVisible={this.state.isModalVisible}>
             <View style={{ backgroundColor: "white" }}>
@@ -73,12 +142,30 @@ class BookingScreen extends Component {
               </Text>
               <Text style={{ fontSize: "20px" }}>
                 Booking Start Date Time: {"\n"}
-                {this.state.bookingStartDate.toLocaleString("en-GB")}
+                {this.state.arrivingDate.toLocaleString("en-GB", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                  hour12: true,
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
                 {"\n"}
               </Text>
               <Text style={{ fontSize: "20px" }}>
                 Booking End Date Time:{"\n"}{" "}
-                {this.state.bookingEndDate.toLocaleString("en-GB")}
+                {this.state.leavingDate.toLocaleString("en-GB", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                  hour12: true,
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+                {"\n"}
+              </Text>
+              <Text style={{ fontSize: "20px" }}>
+                Parking Time:{"\n"} {this.calculateDateDiff()}
                 {"\n"}
               </Text>
               <View
@@ -89,7 +176,29 @@ class BookingScreen extends Component {
               </View>
             </View>
           </Modal>
-
+          <Modal backdropColor={"black"} isVisible={this.state.showDatePicker}>
+            <View style={{ backgroundColor: "white" }}>
+              <DateTimePicker
+                minimumDate={new Date()}
+                locale="en-GB"
+                testID="dateTimePicker"
+                value={
+                  this.state.pickingArriving
+                    ? this.state.arrivingDate
+                    : this.state.leavingDate
+                }
+                mode={this.state.datePickerMode}
+                is24Hour={true}
+                display="default"
+                onChange={this.onChange}
+              />
+              {this.state.datePickerMode == "date" ? (
+                <Button onPress={this.showTimepicker} title="Next" />
+              ) : (
+                <Button onPress={this.closeTimePicker} title="Done" />
+              )}
+            </View>
+          </Modal>
           <Text
             style={{
               fontSize: 12,
@@ -209,22 +318,33 @@ class BookingScreen extends Component {
             }}
           >
             <Button
-              style={{ paddingVertical: "5%", paddingHorizontal: "5%" }}
+              style={{ paddingVertical: "5%", paddingHorizontal: "7%" }}
               type="clear"
+              onPress={() => {
+                this.showDatepicker("Arriving");
+              }}
               title={
                 <Text style={{ fontWeight: "bold" }}>
                   Arriving{"\n"}
                   <Text style={{ fontWeight: "normal" }}>
-                    {this.state.bookingStartDate.toLocaleDateString("en-GB")}
+                    {this.state.arrivingDate.toLocaleDateString("en-GB", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
                     {"\n"}
-                    {this.state.bookingStartDate.toLocaleTimeString()}
+                    {this.state.arrivingDate.toLocaleTimeString([], {
+                      hour12: true,
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
                   </Text>
                 </Text>
               }
             />
             <View
               style={{
-                paddingTop: "5%",
+                paddingTop: "8%",
               }}
             >
               <Text
@@ -242,19 +362,30 @@ class BookingScreen extends Component {
                   fontSize: 15,
                 }}
               >
-                2h 3m
+                {this.calculateDateDiff()}
               </Text>
             </View>
             <Button
-              style={{ paddingVertical: "5%", paddingHorizontal: "5%" }}
+              style={{ paddingVertical: "5%", paddingHorizontal: "7%" }}
               type="clear"
+              onPress={() => {
+                this.showDatepicker("Leaving");
+              }}
               title={
                 <Text style={{ fontWeight: "bold" }}>
                   Leaving{"\n"}
                   <Text style={{ fontWeight: "normal" }}>
-                    {this.state.bookingStartDate.toLocaleDateString("en-GB")}
+                    {this.state.leavingDate.toLocaleDateString("en-GB", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
                     {"\n"}
-                    {this.state.bookingEndDate.toLocaleTimeString()}
+                    {this.state.leavingDate.toLocaleTimeString([], {
+                      hour12: true,
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
                   </Text>
                 </Text>
               }
@@ -342,11 +473,15 @@ class BookingScreen extends Component {
             onPress={this.toggleModal}
             title={
               <Text style={{ weightcolor: "black", fontWeight: "bold" }}>
-                Book now
+                {this.state.arrivingDate.setTime(
+                  this.state.arrivingDate.getTime() - 1000 * 60
+                ) > new Date()
+                  ? "Book Now"
+                  : "Pay Now"}
               </Text>
             }
           />
-        </View>
+        </ScrollView>
       </SafeAreaView>
     );
   }
