@@ -10,6 +10,7 @@ import ParkStack from "./ParkStack";
 import ProfileStack from "./ProfileStack";
 import DetailStack from "./DetailStack";
 import BottomTabNavigator from "./BottomTabNavigator";
+import SetUpScreen from "../screens/SetUpScreen";
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,11 @@ function MainStack() {
         options={{ headerShown: false }}
         name="Preference"
         component={PreferenceScreen}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="SetUp"
+        component={SetUpScreen}
       />
       <Stack.Screen
         name="MyTabs"

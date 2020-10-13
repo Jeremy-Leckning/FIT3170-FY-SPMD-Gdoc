@@ -64,7 +64,7 @@ class DetailScreen extends Component {
             <Text
               style={{
                 fontSize: 24,
-                color: "darkblue",
+                color: "black",
                 fontWeight: "bold",
               }}
             >
@@ -91,7 +91,7 @@ class DetailScreen extends Component {
               style={{
                 fontSize: 16,
                 marginLeft: "2%",
-                color: "darkblue",
+                color: "black",
                 fontWeight: "bold",
               }}
             >
@@ -102,7 +102,7 @@ class DetailScreen extends Component {
               style={{
                 fontSize: 16,
                 marginLeft: "10%",
-                color: "darkblue",
+                color: "black",
                 fontWeight: "bold",
               }}
             >
@@ -113,10 +113,10 @@ class DetailScreen extends Component {
               style={{
                 fontSize: 16,
                 marginLeft: "3%",
-                color: "darkblue",
+                color: "black",
               }}
             >
-              {this.state.parkingData.price}
+              {this.state.parkingData.price}/hr
             </Text>
 
             {/* <Image
@@ -140,7 +140,7 @@ class DetailScreen extends Component {
             ADDRESS
           </Text>
           <View style={styles.row_container}>
-            <Text style={{ color: "darkblue", width: "60%", fontSize: 16 }}>
+            <Text style={{ color: "black", width: "60%", fontSize: 16 }}>
               {this.state.parkingData.address}
             </Text>
 
@@ -164,7 +164,7 @@ class DetailScreen extends Component {
           <Text
             style={{
               fontSize: 16,
-              color: "darkblue",
+              color: "black",
               fontWeight: "bold",
             }}
           >
@@ -199,7 +199,7 @@ class DetailScreen extends Component {
           >
             <Text
               style={{
-                color: "darkblue",
+                color: "black",
                 fontWeight: "bold",
                 marginTop: "2.5%",
                 fontSize: 18,
@@ -229,7 +229,6 @@ const styles = StyleSheet.create({
 
   button: {
     alignItems: "center",
-
     backgroundColor: "rgb(155,195,255)",
     width: "60%",
     height: "5%",

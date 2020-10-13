@@ -11,10 +11,12 @@ import {
 import { SafeAreaView } from "react-navigation";
 import ProgressBarAnimated from "react-native-progress-bar-animated";
 
-// For ignoring warnings of useNativeDriver
+// Ignore yellowbox warnings for loading bar
 import { YellowBox } from "react-native";
 YellowBox.ignoreWarnings([
   "Animated: `useNativeDriver` was not specified. This is a required option and must be explicitly set to `true` or `false`",
+  "Warning: componentWillReceiveProps has been renamed, and is not recommended for use.",
+  "Can't perform a React state update on an unmounted component.",
 ]);
 
 class Bar extends Component {
@@ -54,7 +56,7 @@ class WelcomeScreen extends Component {
     this.animation = new Animated.Value(0);
     this.state = {
       progressBarvalue: 0,
-      loadingTime: 5000,
+      loadingTime: 3000,
     };
   }
 

@@ -1,15 +1,5 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Text,
-  Image,
-  StyleSheet,
-  StatusBar,
-  View,
-  flexDirection,
-  TouchableOpacity,
-  TouchableHighlight,
-} from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import { ScrollView } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -24,8 +14,20 @@ class PreferenceScreen extends Component {
       colorBlind: null,
       paymentMethod: null,
       notification: null,
-      selected: null,
     };
+  }
+
+  navigateToNextPage() {
+    if (
+      this.state.fontSize != 0 &&
+      this.state.language != null &&
+      this.state.colorBlind != null &&
+      this.state.notification != null
+    ) {
+      this.props.navigation.navigate("SetUp");
+    } else {
+      alert("Please fill in all your preferences");
+    }
   }
 
   render() {
@@ -311,13 +313,7 @@ class PreferenceScreen extends Component {
           >
             <TouchableOpacity
               style={styles.button}
-              onPress={() => {
-                this.props.navigation.navigate("MyTabs");
-                this.props.navigation.reset({
-                  index: 0,
-                  routes: [{ name: "MyTabs" }],
-                });
-              }}
+              onPress={() => this.navigateToNextPage()}
             >
               <Text>Next</Text>
             </TouchableOpacity>
