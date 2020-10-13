@@ -1,17 +1,25 @@
 import React, { Component } from "react";
-import { Text, View, flexDirection } from "react-native";
+import {
+  Platform,
+  Text,
+  View,
+  flexDirection,
+  Dimensions,
+  Animated,
+  StyleSheet,
+} from "react-native";
 import { SafeAreaView } from "react-navigation";
+import ProgressBarAnimated from "react-native-progress-bar-animated";
 
-class ProgressBar extends Component {
+// For ignoring warnings of useNativeDriver
+import { YellowBox } from "react-native";
+YellowBox.ignoreWarnings([
+  "Animated: `useNativeDriver` was not specified. This is a required option and must be explicitly set to `true` or `false`",
+]);
+
+class Bar extends Component {
   render() {
-    const {
-      height,
-      borderColor,
-      borderWidth,
-      borderRadius,
-      barColor,
-      fillColor,
-    } = this.props;
+    const { height, borderColor, borderWidth, borderRadius } = this.props;
     return (
       <View
         style={{
@@ -30,7 +38,7 @@ class ProgressBar extends Component {
   }
 }
 
-ProgressBar.defaultProps = {
+Bar.defaultProps = {
   height: 10,
   borderColor: "#000",
   borderWidth: 2,
@@ -43,26 +51,39 @@ ProgressBar.defaultProps = {
 class WelcomeScreen extends Component {
   constructor(props) {
     super(props);
+    this.animation = new Animated.Value(0);
+    this.state = {
+      progressBarvalue: 0,
+      loadingTime: 5000,
+    };
   }
 
   componentDidMount() {
+    this.onAnimation();
     this.timeoutHandle = setTimeout(() => {
       this.props.navigation.navigate("Preference");
-    }, 3000);
+    }, this.state.loadingTime);
   }
 
   componentWillUnmount() {
     clearTimeout(this.timeoutHandle);
   }
 
+  onAnimation = () => {
+    this.animation.addListener(({ value }) => {
+      this.setState({ progressBarvalue: parseInt(value, 10) });
+    });
+    Animated.timing(this.animation, {
+      toValue: 100,
+      duration: this.state.loadingTime - 500,
+      useNativeDriver: false,
+    }).start();
+  };
+
   render() {
+    const barWidth = Dimensions.get("screen").width - 30;
     return (
-      <SafeAreaView
-        style={{
-          backgroundColor: "rgb(122, 155, 239)",
-          flex: 1,
-        }}
-      >
+      <SafeAreaView style={styles.container}>
         <View style={{ paddingTop: "140%", alignItems: "center" }}>
           <Text
             style={{
@@ -84,11 +105,27 @@ class WelcomeScreen extends Component {
             PARK
           </Text>
 
-          <ProgressBar></ProgressBar>
+          <Bar></Bar>
+          {/* Reference for loading bar: https://www.npmjs.com/package/react-native-progress-bar-animated */}
+          <View>
+            <Animated.View />
+            <ProgressBarAnimated
+              width={barWidth}
+              value={this.state.progressBarvalue}
+              backgroundColorOnComplete="#6CC644"
+            />
+            <Animated.Text style={{ textAlign: "center" }}>
+              {this.state.progressBarvalue}%
+            </Animated.Text>
+          </View>
         </View>
       </SafeAreaView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: { backgroundColor: "rgb(122, 155, 239)", flex: 1 },
+});
 
 export default WelcomeScreen;
