@@ -8,6 +8,7 @@ import {
   View,
   flexDirection,
   TouchableOpacity,
+  TouchableHighlight,
 } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import { ScrollView } from "react-native-gesture-handler";
@@ -20,16 +21,17 @@ class PreferenceScreen extends Component {
     this.state = {
       fontSize: 0,
       language: null,
-      colorBlind: 0,
+      colorBlind: null,
       paymentMethod: null,
-      notification: 1,
+      notification: null,
+      selected: null,
     };
   }
 
   render() {
     return (
       <SafeAreaView style={{ backgroundColor: "lightblue", flex: 1 }}>
-        <View style={{ marginHorizontal: "5%" }}>
+        <View style={{ marginHorizontal: "5%", flex: 1 }}>
           <View style={{ alignItems: "center", marginTop: "10%" }}>
             <Text
               style={{
@@ -52,28 +54,52 @@ class PreferenceScreen extends Component {
               }}
             >
               <TouchableOpacity
-                style={styles.A_button}
+                style={[
+                  styles.A_button,
+                  {
+                    backgroundColor:
+                      this.state.fontSize === 1 ? "green" : "darkgrey",
+                  },
+                ]}
                 onPress={() => this.setState({ fontSize: 1 })}
               >
                 <Text style={{ fontSize: 14, fontWeight: "bold" }}>A</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={styles.A_button}
+                style={[
+                  styles.A_button,
+                  {
+                    backgroundColor:
+                      this.state.fontSize === 2 ? "green" : "darkgrey",
+                  },
+                ]}
                 onPress={() => this.setState({ fontSize: 2 })}
               >
                 <Text style={{ fontSize: 20, fontWeight: "bold" }}> A </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={styles.A_button}
+                style={[
+                  styles.A_button,
+                  {
+                    backgroundColor:
+                      this.state.fontSize === 3 ? "green" : "darkgrey",
+                  },
+                ]}
                 onPress={() => this.setState({ fontSize: 3 })}
               >
                 <Text style={{ fontSize: 26, fontWeight: "bold" }}> A </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={styles.A_button}
+                style={[
+                  styles.A_button,
+                  {
+                    backgroundColor:
+                      this.state.fontSize === 4 ? "green" : "darkgrey",
+                  },
+                ]}
                 onPress={() => this.setState({ fontSize: 4 })}
               >
                 <Text style={{ fontSize: 32, fontWeight: "bold" }}> A </Text>
@@ -95,7 +121,13 @@ class PreferenceScreen extends Component {
               }}
             >
               <TouchableOpacity
-                style={styles.button_preference}
+                style={[
+                  styles.button_preference,
+                  {
+                    backgroundColor:
+                      this.state.language === "english" ? "green" : "white",
+                  },
+                ]}
                 onPress={() => this.setState({ language: "english" })}
               >
                 <Text style={{ fontSize: 18, fontWeight: "bold" }}>
@@ -104,14 +136,26 @@ class PreferenceScreen extends Component {
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={styles.button_preference}
+                style={[
+                  styles.button_preference,
+                  {
+                    backgroundColor:
+                      this.state.language === "chinese" ? "green" : "white",
+                  },
+                ]}
                 onPress={() => this.setState({ language: "chinese" })}
               >
                 <Text style={{ fontSize: 18, fontWeight: "bold" }}> 中文 </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={styles.button_preference}
+                style={[
+                  styles.button_preference,
+                  {
+                    backgroundColor:
+                      this.state.language === "japanese" ? "green" : "white",
+                  },
+                ]}
                 onPress={() => this.setState({ language: "japanese" })}
               >
                 <Text style={{ fontSize: 18, fontWeight: "bold" }}>日本語</Text>
@@ -136,14 +180,26 @@ class PreferenceScreen extends Component {
               }}
             >
               <TouchableOpacity
-                style={styles.button_preference}
+                style={[
+                  styles.button_preference,
+                  {
+                    backgroundColor:
+                      this.state.colorBlind === 1 ? "green" : "white",
+                  },
+                ]}
                 onPress={() => this.setState({ colorBlind: 1 })}
               >
                 <Text style={{ fontSize: 18, fontWeight: "bold" }}>Yes</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={styles.button_preference}
+                style={[
+                  styles.button_preference,
+                  {
+                    backgroundColor:
+                      this.state.colorBlind === 0 ? "green" : "white",
+                  },
+                ]}
                 onPress={() => this.setState({ colorBlind: 0 })}
               >
                 <Text style={{ fontSize: 18, fontWeight: "bold" }}> No </Text>
@@ -155,7 +211,7 @@ class PreferenceScreen extends Component {
 
           {/*-------------------------- PAYMENT METHOD ---------------------------------- */}
 
-          <View>
+          {/* <View>
             <Text style={{ fontSize: 18, fontWeight: "bold" }}>
               Payment method
             </Text>
@@ -168,7 +224,15 @@ class PreferenceScreen extends Component {
               }}
             >
               <TouchableOpacity
-                style={styles.button_preference_longer}
+                style={[
+                  styles.button_preference_longer,
+                  {
+                    backgroundColor:
+                      this.state.paymentMethod === "credit card"
+                        ? "green"
+                        : "white",
+                  },
+                ]}
                 onPress={() => this.setState({ paymentMethod: "credit card" })}
               >
                 <Text style={{ fontSize: 18, fontWeight: "bold" }}>
@@ -177,7 +241,13 @@ class PreferenceScreen extends Component {
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={styles.button_preference}
+                style={[
+                  styles.button_preference_longer,
+                  {
+                    backgroundColor:
+                      this.state.paymentMethod === "cash" ? "green" : "white",
+                  },
+                ]}
                 onPress={() => this.setState({ paymentMethod: "cash" })}
               >
                 <Text style={{ fontSize: 18, fontWeight: "bold" }}> Cash </Text>
@@ -185,7 +255,7 @@ class PreferenceScreen extends Component {
             </View>
           </View>
 
-          <View style={styles.spaceHolder} />
+          <View style={styles.spaceHolder} /> */}
 
           {/*-------------------------- NOTIFICATION ---------------------------------- */}
           <View>
@@ -201,14 +271,26 @@ class PreferenceScreen extends Component {
               }}
             >
               <TouchableOpacity
-                style={styles.button_preference}
+                style={[
+                  styles.button_preference,
+                  {
+                    backgroundColor:
+                      this.state.notification === 1 ? "green" : "white",
+                  },
+                ]}
                 onPress={() => this.setState({ notification: 1 })}
               >
                 <Text style={{ fontSize: 18, fontWeight: "bold" }}>On</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={styles.button_preference}
+                style={[
+                  styles.button_preference,
+                  {
+                    backgroundColor:
+                      this.state.notification === 0 ? "green" : "white",
+                  },
+                ]}
                 onPress={() => this.setState({ notification: 0 })}
               >
                 <Text style={{ fontSize: 18, fontWeight: "bold" }}> Off </Text>
@@ -219,7 +301,14 @@ class PreferenceScreen extends Component {
           <View style={styles.spaceHolder} />
           {/*-------------------------- FINISH BUTTON ---------------------------------- */}
 
-          <View style={{ alignItems: "center", paddingVertical: "30%" }}>
+          <View
+            style={{
+              alignItems: "center",
+              flex: 1,
+              justifyContent: "flex-end",
+              marginBottom: 20,
+            }}
+          >
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
