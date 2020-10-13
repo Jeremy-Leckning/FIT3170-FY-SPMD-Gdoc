@@ -54,11 +54,21 @@ class DetailScreen extends Component {
               >
                 {this.state.parkingData.parkingType}
               </Text>
-
-              <Image
-                style={{ marginTop: 15, marginLeft: "auto" }}
-                source={require("../assets/Rating.png")}
-              />
+              <View
+                style={{
+                  marginTop: 15,
+                  marginLeft: "auto",
+                  backgroundColor: "gold",
+                  width: 50,
+                  height: 30,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text style={{ fontWeight: "bold", color: "darkblue" }}>
+                  {this.state.parkingData.parkingRating}
+                </Text>
+              </View>
             </View>
 
             <Text
