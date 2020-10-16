@@ -54,6 +54,11 @@ const styles = StyleSheet.create({
   horizontalSpaceHolder: {
     paddingHorizontal: 5,
   },
+  subtitle: {
+    color: "grey",
+    fontSize: 14,
+    marginBottom: "4%",
+  },
   map: { height: 60, width: 60 },
 
   timeContainer: {
@@ -64,6 +69,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     borderRightWidth: 0,
   },
+
   button: {
     alignItems: "center",
     backgroundColor: "rgb(155,195,255)",

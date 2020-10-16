@@ -83,9 +83,9 @@ class DetailScreen extends Component {
           </View>
         </View>
         <View style={styles.spaceHolder} />
-        <Text style={{ color: "grey", fontSize: 14, marginBottom: "4%" }}>
-          ADDRESS
-        </Text>
+        <Text style={styles.subtitle}>ADDRESS</Text>
+        <View style={styles.spaceHolder} />
+
         <View
           style={[styles.row_container, { justifyContent: "space-between" }]}
         >
@@ -95,9 +95,7 @@ class DetailScreen extends Component {
 
         <View style={styles.spaceHolder} />
         <View style={styles.spaceHolder} />
-        <Text style={{ color: "grey", fontSize: 14, marginBottom: "4%" }}>
-          OPERATION
-        </Text>
+        <Text style={styles.subtitle}>OPERATION</Text>
         <Text style={styles.operation}>Open • 24 Hours</Text>
         <View style={styles.spaceHolder} />
         <View style={styles.spaceHolder} />

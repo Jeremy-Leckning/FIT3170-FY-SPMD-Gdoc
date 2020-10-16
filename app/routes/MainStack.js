@@ -7,8 +7,6 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Feather from "react-native-vector-icons/Feather";
 import MoreStack from "./MoreStack";
 import ParkStack from "./ParkStack";
-import ProfileStack from "./ProfileStack";
-import DetailStack from "./DetailStack";
 import BottomTabNavigator from "./BottomTabNavigator";
 import SetUpScreen from "../screens/SetUpScreen";
 

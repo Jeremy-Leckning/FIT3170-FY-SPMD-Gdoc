@@ -38,24 +38,6 @@ class ProfileScreen extends Component {
               </TouchableOpacity>
             </View>
           </View>
-
-          <View style={styles.container}>
-            <View style={styles.contentSeparators} />
-            <Text style={styles.text}> Setting 1 </Text>
-            <View style={styles.lineSeparators} />
-            <Text style={styles.text}> Payment Setting </Text>
-            <View style={styles.lineSeparators} />
-            <Text style={styles.text}> History </Text>
-            <View style={styles.contentSeparators} />
-            <View style={styles.spaceHolder} />
-            <View style={styles.contentSeparators} />
-            <Text style={styles.text}> Customization </Text>
-            <View style={styles.lineSeparators} />
-            <Text style={styles.text}> Language </Text>
-            <View style={styles.lineSeparators} />
-            <Text style={styles.text}> Vehicle Settings </Text>
-            <View style={styles.contentSeparators} />
-          </View>
         </ScrollView>
       </SafeAreaView>
     );
@@ -70,10 +52,6 @@ const styles = StyleSheet.create({
     flex: 1.5,
     alignItems: "center",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight + 20 : 20,
-  },
-
-  container: {
-    flex: 2,
   },
 
   text: {
