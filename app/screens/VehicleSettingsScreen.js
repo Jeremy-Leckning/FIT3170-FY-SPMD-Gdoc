@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { Text, View, SafeAreaView } from "react-native";
 
-class HistoryScreen extends Component {
+class VehicleSettingsScreen extends Component {
   render() {
     return (
       <SafeAreaView>
         <View>
-          <Text style={{ margin: 10 }}>History Screen</Text>
+          <Text style={{ margin: 10 }}>Vehicle Settings Screen</Text>
         </View>
       </SafeAreaView>
     );
   }
 }
 
-export default HistoryScreen;
+export default VehicleSettingsScreen;

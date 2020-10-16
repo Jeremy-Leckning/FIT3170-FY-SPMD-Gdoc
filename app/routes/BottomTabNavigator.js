@@ -4,8 +4,6 @@ import Feather from "react-native-vector-icons/Feather";
 import React, { Component } from "react";
 import MoreStack from "./MoreStack";
 import ParkStack from "./ParkStack";
-import ProfileStack from "./ProfileStack";
-import DetailStack from "./DetailStack";
 import HistoryScreen from "../screens/HistoryScreen";
 import FavouriteScreen from "../screens/FavouriteScreen";
 import { StackActions, NavigationActions } from "react-navigation";
@@ -57,20 +55,6 @@ class BottomTabNavigator extends Component {
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
                 name="star-outline"
-                color={color}
-                size={size}
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="ProfileStack"
-          component={ProfileStack}
-          options={{
-            tabBarLabel: "Profile",
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="account"
                 color={color}
                 size={size}
               />
