@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Text, Button } from "react-native-elements";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, Image } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import { Divider, Icon } from "react-native-elements";
 import Modal from "react-native-modal";
 // import deepDiffer from "react-native/lib/deepDiffer";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import styles from "../styles/StyleSheet";
 
 var diff = require("deep-diff");
 const startTime = new Date();
@@ -199,56 +200,33 @@ class BookingScreen extends Component {
               )}
             </View>
           </Modal>
-          <Text
-            style={{
-              fontSize: 12,
-              color: "gray",
-              fontWeight: "500",
-              paddingVertical: "1%",
-            }}
-          >
+          <Text style={styles.parkingType}>
             {this.state.parkingData.parkingType}
           </Text>
-          <Text
-            style={{ fontSize: 22, fontWeight: "bold", paddingVertical: "1%" }}
-          >
-            {this.state.parkingData.title}
-          </Text>
-          <Text
-            style={{
-              fontSize: 12,
-              color: "gray",
-              fontWeight: "500",
-              paddingVertical: "1%",
-            }}
-          >
-            {this.state.parkingData.address}
-          </Text>
-          <View style={{ flexDirection: "row", paddingVertical: "1%" }}>
-            <Icon
-              style={{ paddingHorizontal: "2%" }}
-              name="location-arrow"
-              type="font-awesome"
-            />
-            <Text style={{ paddingVertical: "1%" }}>
-              {this.state.parkingDistance}km
-            </Text>
-            <Icon
-              style={{ paddingHorizontal: "2%" }}
-              name="dollar"
-              type="foundation"
-            />
-            <Text style={{ paddingVertical: "1%" }}>
-              {this.state.parkingData.price}/hr
-            </Text>
+          <View style={styles.spaceHolder} />
+
+          <Text style={styles.title}>{this.state.parkingData.title}</Text>
+          <Text style={styles.address}>{this.state.parkingData.address}</Text>
+
+          <View style={styles.spaceHolder} />
+
+          <View style={[styles.row_container, { alignItems: "center" }]}>
+            <Image source={require("../assets/direction.png")} />
+            <Text style={styles.distance}>{this.state.parkingDistance}km</Text>
+
+            <View style={styles.horizontalSpaceHolder} />
+
+            <Icon name="dollar" type="foundation" />
+            <Text style={styles.price}>{this.state.parkingData.price}/hr</Text>
           </View>
 
           {/* ----------------------------------- Parking Spaces  -----------------------------------*/}
+          <View style={styles.spaceHolder} />
 
           <Text style={{ fontWeight: "bold", fontSize: 16 }}>
             Space or Parking Lot
           </Text>
-          <View
+          {/* <View
             style={{
               backgroundColor: "rgb(255,248,230)",
               padding: "1%",
@@ -265,11 +243,10 @@ class BookingScreen extends Component {
                 padding: "2%",
               }}
             >
-              Today we have x lot available, don't forget to select before
-              booking
+              Don't forget to select spot before booking
             </Text>
-          </View>
-          <ScrollView horizontal style={{ paddingVertical: "4%" }}>
+          </View> */}
+          <ScrollView horizontal>
             {this.state.parkingData.parkingSpaces.map((parkingData, index) => {
               return (
                 <Button
@@ -307,16 +284,9 @@ class BookingScreen extends Component {
             })}
           </ScrollView>
           {/* ----------------------------------- Parking Duration  -----------------------------------*/}
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              borderColor: "gray",
-              borderWidth: 1,
-              borderLeftWidth: 0,
-              borderRightWidth: 0,
-            }}
-          >
+          <View style={styles.spaceHolder} />
+
+          <View style={styles.timeContainer}>
             <Button
               style={{ paddingVertical: "5%", paddingHorizontal: "7%" }}
               type="clear"

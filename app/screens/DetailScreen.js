@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import {
-  Button,
-  Text,
   Image,
   StyleSheet,
   StatusBar,
@@ -10,8 +8,12 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-navigation";
+import { Divider, Icon } from "react-native-elements";
+import { Text, Button } from "react-native-elements";
+
 import { ScrollView } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/FontAwesome";
+// import Icon from "react-native-vector-icons/FontAwesome";
+import styles from "../styles/StyleSheet";
 
 class DetailScreen extends Component {
   constructor(props) {
@@ -19,7 +21,7 @@ class DetailScreen extends Component {
 
     this.state = {
       parkingData: this.props.route.params.parkingData,
-      parkindDistance: this.props.route.params.parkingDistance,
+      parkingDistance: this.props.route.params.parkingDistance,
       favorite: false,
       image: require("../assets/senayan.png"),
       imageSW1: require("../assets/sw1_carpark.jpg"),
@@ -39,219 +41,89 @@ class DetailScreen extends Component {
       );
     }
     return (
-      <SafeAreaView style={{ marginLeft: "5%", marginRight: "8%" }}>
-        <ScrollView>
-          {imageParking}
-          <View>
-            <View style={styles.row_container}>
-              <Text
-                style={{
-                  marginTop: 15,
-                  color: "grey",
-                  fontSize: 14,
-                  fontWeight: "bold",
-                }}
-              >
-                {this.state.parkingData.parkingType}
+      <SafeAreaView style={{ padding: "3%" }}>
+        {imageParking}
+        <View>
+          <View style={styles.spaceHolder} />
+          <View
+            style={[styles.row_container, { justifyContent: "space-between" }]}
+          >
+            <Text style={styles.parkingType}>
+              {this.state.parkingData.parkingType}
+            </Text>
+            <View style={styles.rating}>
+              <Text style={{ fontWeight: "bold", color: "darkblue" }}>
+                {this.state.parkingData.parkingRating}
               </Text>
-              <View
-                style={{
-                  marginTop: 15,
-                  marginLeft: "auto",
-                  backgroundColor: "gold",
-                  width: 50,
-                  height: 30,
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Text style={{ fontWeight: "bold", color: "darkblue" }}>
-                  {this.state.parkingData.parkingRating}
-                </Text>
-              </View>
-            </View>
-
-            <Text
-              style={{
-                fontSize: 24,
-                color: "black",
-                fontWeight: "bold",
-              }}
-            >
-              {this.state.parkingData.title}
-            </Text>
-            <Text
-              style={{
-                marginTop: 3,
-                fontSize: 20,
-                color: "grey",
-              }}
-            >
-              {this.state.parkingData.location}
-            </Text>
-          </View>
-          <View style={styles.spaceHolder} />
-          <View style={styles.row_container}>
-            <Image
-              style={{ marginLeft: "1%" }}
-              source={require("../assets/direction.png")}
-            />
-
-            <Text
-              style={{
-                fontSize: 16,
-                marginLeft: "2%",
-                color: "black",
-                fontWeight: "bold",
-              }}
-            >
-              {this.state.parkindDistance}km
-            </Text>
-
-            <Text
-              style={{
-                fontSize: 16,
-                marginLeft: "10%",
-                color: "black",
-                fontWeight: "bold",
-              }}
-            >
-              $
-            </Text>
-
-            <Text
-              style={{
-                fontSize: 16,
-                marginLeft: "3%",
-                color: "black",
-              }}
-            >
-              {this.state.parkingData.price}/hr
-            </Text>
-
-            {/* <Image
-              style={{ marginLeft: "auto" }}
-              source={require("../assets/Star.png")}
-            /> */}
-
-            <View style={{ marginLeft: "auto" }}>
-              <Icon
-                name={this.state.favorite ? "star" : "star-o"}
-                color={this.state.favorite ? "#F44336" : "rgb(50, 50, 50)"}
-                size={30}
-                onPress={() =>
-                  this.setState({ favorite: !this.state.favorite })
-                }
-              />
             </View>
           </View>
-          <View style={styles.spaceHolder} />
-          <Text style={{ color: "grey", fontSize: 14, marginBottom: "4%" }}>
-            ADDRESS
-          </Text>
-          <View style={styles.row_container}>
-            <Text style={{ color: "black", width: "60%", fontSize: 16 }}>
-              {this.state.parkingData.address}
-            </Text>
 
-            <Image
-              style={{
-                height: 60,
-                width: 60,
-                marginLeft: "auto",
-              }}
-              source={require("../assets/Maps.png")}
+          <Text style={styles.title}>{this.state.parkingData.title}</Text>
+          <Text style={styles.location}>{this.state.parkingData.location}</Text>
+        </View>
+        <View style={styles.spaceHolder} />
+        <View style={[styles.row_container, { alignItems: "center" }]}>
+          <Image source={require("../assets/direction.png")} />
+
+          <Text style={styles.distance}>{this.state.parkingDistance}km</Text>
+          <View style={styles.horizontalSpaceHolder} />
+
+          <Icon name="dollar" type="foundation" />
+
+          <Text style={styles.price}>{this.state.parkingData.price}/hr</Text>
+
+          <View style={{ marginLeft: "auto" }}>
+            <Icon
+              name={this.state.favorite ? "star" : "star-o"}
+              type="font-awesome"
+              color={this.state.favorite ? "#F44336" : "rgb(50, 50, 50)"}
+              size={30}
+              onPress={() => this.setState({ favorite: !this.state.favorite })}
             />
           </View>
-          <Text style={{ color: "blue", fontSize: 16, marginTop: "3%" }}>
-            Direction
-          </Text>
-          <View style={styles.spaceHolder} />
-          <View style={styles.spaceHolder} />
-          <Text style={{ color: "grey", fontSize: 14, marginBottom: "4%" }}>
-            OPERATION
-          </Text>
-          <Text
-            style={{
-              fontSize: 16,
-              color: "black",
-              fontWeight: "bold",
-            }}
-          >
-            Open • 24 Hours
-          </Text>
-          <View style={styles.spaceHolder} />
-          <View style={styles.spaceHolder} />
-          {/* <Text style={{ color: "grey", fontSize: 14, marginBottom: "4%" }}>
-            GATE IN/OUT
-          </Text> */}
-          {/* <View
-            style={{
-              flex: 1,
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <Text style={{ color: "blue", fontSize: 16 }}> North </Text>
-            <Text style={{ color: "blue", fontSize: 16 }}> South </Text>
-            <Text style={{ color: "blue", fontSize: 16 }}> East </Text>
-            <Text style={{ color: "blue", fontSize: 16 }}> West </Text>
-          </View> */}
-          <TouchableOpacity
-            style={styles.button}
-            title="Next"
-            onPress={() => {
-              this.props.navigation.navigate("Book", {
-                parkingData: this.props.route.params.parkingData,
-                parkingDistance: this.props.route.params.parkingDistance,
-              });
-            }}
-          >
-            <Text
-              style={{
-                color: "black",
-                fontWeight: "bold",
-                marginTop: "2.5%",
-                fontSize: 18,
-              }}
-            >
+        </View>
+        <View style={styles.spaceHolder} />
+        <Text style={{ color: "grey", fontSize: 14, marginBottom: "4%" }}>
+          ADDRESS
+        </Text>
+        <View
+          style={[styles.row_container, { justifyContent: "space-between" }]}
+        >
+          <Text style={styles.address}>{this.state.parkingData.address}</Text>
+          <Image style={styles.map} source={require("../assets/Maps.png")} />
+        </View>
+
+        <View style={styles.spaceHolder} />
+        <View style={styles.spaceHolder} />
+        <Text style={{ color: "grey", fontSize: 14, marginBottom: "4%" }}>
+          OPERATION
+        </Text>
+        <Text style={styles.operation}>Open • 24 Hours</Text>
+        <View style={styles.spaceHolder} />
+        <View style={styles.spaceHolder} />
+
+        <Button
+          style={{ padding: "5%" }}
+          buttonStyle={{
+            borderRadius: 15,
+
+            backgroundColor: "rgb(155,195,255)",
+          }}
+          onPress={() => {
+            this.props.navigation.navigate("Book", {
+              parkingData: this.props.route.params.parkingData,
+              parkingDistance: this.props.route.params.parkingDistance,
+            });
+          }}
+          title={
+            <Text style={{ weightcolor: "black", fontWeight: "bold" }}>
               Next
             </Text>
-          </TouchableOpacity>
-          <View style={styles.spaceHolder} />
-          <View style={styles.spaceHolder} />
-          <View style={styles.spaceHolder} />
-          <View style={styles.spaceHolder} />
-        </ScrollView>
+          }
+        />
       </SafeAreaView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  row_container: {
-    flexDirection: "row",
-  },
-
-  spaceHolder: {
-    marginTop: 25,
-  },
-
-  button: {
-    alignItems: "center",
-    backgroundColor: "rgb(155,195,255)",
-    width: "60%",
-    height: "5%",
-    borderRadius: 50,
-    marginBottom: "20%",
-    marginLeft: "15%",
-  },
-
-  image: {
-    marginTop: "2%",
-    height: "20%",
-    width: "100%",
-  },
-});
 
 export default DetailScreen;

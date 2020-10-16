@@ -13,7 +13,7 @@ import { StackActions, NavigationActions } from "react-navigation";
 const Tab = createBottomTabNavigator();
 
 class BottomTabNavigator extends Component {
-  render() {
+   render() {
     return (
       <Tab.Navigator
         initialRouteName="Welcome"
