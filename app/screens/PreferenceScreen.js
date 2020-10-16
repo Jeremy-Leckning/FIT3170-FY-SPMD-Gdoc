@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import { ScrollView } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { AsyncStorage } from "react-native";
 
 class PreferenceScreen extends Component {
   constructor(props) {
@@ -24,7 +25,16 @@ class PreferenceScreen extends Component {
       this.state.colorBlind != null &&
       this.state.notification != null
     ) {
-      this.props.navigation.navigate("SetUp");
+      AsyncStorage.setItem("fontSize2", "1");
+      this.props.navigation.navigate("SetUp", {
+        preference: {
+          fontSize: this.state.fontSize,
+          language: this.state.language,
+          colorBlind: this.state.colorBlind,
+          paymentMethod: this.state.paymentMethod,
+          notification: this.state.notification,
+        },
+      });
     } else {
       alert("Please fill in all your preferences");
     }
@@ -76,7 +86,7 @@ class PreferenceScreen extends Component {
                       this.state.fontSize === 2 ? "green" : "darkgrey",
                   },
                 ]}
-                onPress={() => this.setState({ fontSize: 2 })}
+                onPress={() => this.setState({ fontSize: 1.3 })}
               >
                 <Text style={{ fontSize: 20, fontWeight: "bold" }}> A </Text>
               </TouchableOpacity>
@@ -89,7 +99,7 @@ class PreferenceScreen extends Component {
                       this.state.fontSize === 3 ? "green" : "darkgrey",
                   },
                 ]}
-                onPress={() => this.setState({ fontSize: 3 })}
+                onPress={() => this.setState({ fontSize: 1.5 })}
               >
                 <Text style={{ fontSize: 26, fontWeight: "bold" }}> A </Text>
               </TouchableOpacity>
@@ -102,7 +112,7 @@ class PreferenceScreen extends Component {
                       this.state.fontSize === 4 ? "green" : "darkgrey",
                   },
                 ]}
-                onPress={() => this.setState({ fontSize: 4 })}
+                onPress={() => this.setState({ fontSize: 1.7 })}
               >
                 <Text style={{ fontSize: 32, fontWeight: "bold" }}> A </Text>
               </TouchableOpacity>

@@ -17,7 +17,15 @@ class SetUpScreen extends Component {
     };
   }
   navigateToNextPage() {
-    this.props.navigation.navigate("MyTabs");
+    this.props.navigation.navigate("MyTabs", {
+      preference: {
+        fontSize: this.props.route.params.preference.fontSize,
+        language: this.props.route.params.preference.language,
+        colorBlind: this.props.route.params.preference.colorBlind,
+        paymentMethod: this.props.route.params.preference.paymentMethod,
+        notification: this.props.route.params.preference.notification,
+      },
+    });
     this.props.navigation.reset({
       index: 0,
       routes: [{ name: "MyTabs" }],

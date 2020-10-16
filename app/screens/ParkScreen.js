@@ -112,11 +112,13 @@ class ParkScreen extends Component {
                 // description={marker.description}
               >
                 <View
-                  style={{ backgroundColor: "white", 
-                  width: this.state.currentMarker==marker?200:100, 
-                  height: this.state.currentMarker==marker?60:30 }}
+                  style={{
+                    backgroundColor: "white",
+                    width: this.state.currentMarker == marker ? 200 : 100,
+                    height: this.state.currentMarker == marker ? 60 : 30,
+                  }}
                 >
-                  <Text style={{textAlign: 'center'}}>{marker.title}</Text>
+                  <Text style={{ textAlign: "center" }}>{marker.title}</Text>
                 </View>
               </Marker>
             ))}

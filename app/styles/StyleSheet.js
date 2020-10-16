@@ -8,17 +8,20 @@ import {
   View,
   flexDirection,
   TouchableOpacity,
+  AsyncStorage,
 } from "react-native";
+
+let fontMultiplier = 1;
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 20,
+    fontSize: 20 * fontMultiplier,
     color: "black",
     fontWeight: "bold",
   },
-
+ 
   parkingType: {
-    fontSize: 14,
+    fontSize: 14 * fontMultiplier,
     color: "grey",
     fontWeight: "bold",
   },
@@ -31,20 +34,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   location: {
-    fontSize: 20,
+    fontSize: 20 * fontMultiplier,
     color: "grey",
   },
   price: {
-    fontSize: 16,
+    fontSize: 16 * fontMultiplier,
     color: "black",
     fontWeight: "bold",
   },
   distance: {
-    fontSize: 16,
+    fontSize: 16 * fontMultiplier,
     color: "black",
     fontWeight: "bold",
   },
-  address: { color: "black", width: "60%", fontSize: 16 },
+  address: { color: "black", width: "60%", fontSize: 16 * fontMultiplier },
   row_container: {
     flexDirection: "row",
   },
@@ -56,9 +59,9 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     color: "grey",
-    fontSize: 14,
-    marginBottom: "4%",
+    fontSize: 14 * fontMultiplier,
   },
+  heading: { fontWeight: "bold", fontSize: 16 * fontMultiplier },
   map: { height: 60, width: 60 },
 
   timeContainer: {
@@ -68,28 +71,49 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderLeftWidth: 0,
     borderRightWidth: 0,
+    alignItems: "center",
   },
 
   button: {
-    alignItems: "center",
+    borderRadius: 15,
     backgroundColor: "rgb(155,195,255)",
-    width: "60%",
-    height: "5%",
-    borderRadius: 50,
-    marginBottom: "20%",
-    marginLeft: "20%",
   },
   buttonText: {
     color: "black",
     fontWeight: "bold",
     marginTop: "2.5%",
-    fontSize: 18,
+    fontSize: 18 * fontMultiplier,
   },
-  operation: { fontSize: 16, color: "black", fontWeight: "bold" },
+  parkinglot: {
+    borderRadius: 15,
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    borderColor: "gray",
+  },
+  operation: {
+    fontSize: 16 * fontMultiplier,
+    color: "black",
+    fontWeight: "bold",
+  },
   image: {
-    height: "20%",
+    height: "40%",
     width: "100%",
   },
+  duration: {
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
+    backgroundColor: "rgb(19, 111, 209)",
+    borderColor: "rgb(19, 111, 209)",
+    borderRadius: 15,
+    borderWidth: 1,
+    overflow: "hidden",
+    padding: "2%",
+    fontWeight: "bold",
+    fontSize: 15 * fontMultiplier,
+  },
+  info: { textAlign: "left", fontSize: 15 * fontMultiplier },
+  divider: { borderBottomColor: "gray", borderBottomWidth: 1 },
 });
 
 export default styles;

@@ -101,12 +101,7 @@ class DetailScreen extends Component {
         <View style={styles.spaceHolder} />
 
         <Button
-          style={{ padding: "5%" }}
-          buttonStyle={{
-            borderRadius: 15,
-
-            backgroundColor: "rgb(155,195,255)",
-          }}
+          buttonStyle={styles.button}
           onPress={() => {
             this.props.navigation.navigate("Book", {
               parkingData: this.props.route.params.parkingData,

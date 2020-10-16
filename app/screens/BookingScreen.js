@@ -223,29 +223,11 @@ class BookingScreen extends Component {
           {/* ----------------------------------- Parking Spaces  -----------------------------------*/}
           <View style={styles.spaceHolder} />
 
-          <Text style={{ fontWeight: "bold", fontSize: 16 }}>
-            Space or Parking Lot
-          </Text>
-          {/* <View
-            style={{
-              backgroundColor: "rgb(255,248,230)",
-              padding: "1%",
-              marginTop: "2%",
-              borderRadius: 10,
-              borderWidth: 1,
-              borderColor: "#FFCE49",
-            }}
-          >
-            <Text
-              style={{
-                textAlign: "left",
-                color: "#000",
-                padding: "2%",
-              }}
-            >
-              Don't forget to select spot before booking
-            </Text>
-          </View> */}
+          <Text style={styles.heading}>Space or Parking Lot</Text>
+          <View style={styles.spaceHolder} />
+          <View style={styles.spaceHolder} />
+          <View style={styles.spaceHolder} />
+
           <ScrollView horizontal>
             {this.state.parkingData.parkingSpaces.map((parkingData, index) => {
               return (
@@ -256,19 +238,17 @@ class BookingScreen extends Component {
                       currentSelectedParking: parkingData,
                     });
                   }}
-                  style={{
-                    backgroundColor: !diff(
-                      this.state.currentSelectedParking,
-                      parkingData
-                    )
-                      ? "lightblue"
-                      : "white",
-                    padding: 5,
-                    margin: 5,
-                    borderRadius: 15,
-                    borderWidth: 1,
-                    borderColor: "gray",
-                  }}
+                  style={[
+                    styles.parkinglot,
+                    {
+                      backgroundColor: !diff(
+                        this.state.currentSelectedParking,
+                        parkingData
+                      )
+                        ? "lightblue"
+                        : "white",
+                    },
+                  ]}
                   type="clear"
                   title={
                     <Text>
@@ -285,10 +265,11 @@ class BookingScreen extends Component {
           </ScrollView>
           {/* ----------------------------------- Parking Duration  -----------------------------------*/}
           <View style={styles.spaceHolder} />
+          <View style={styles.spaceHolder} />
+          <View style={styles.spaceHolder} />
 
           <View style={styles.timeContainer}>
             <Button
-              style={{ paddingVertical: "5%", paddingHorizontal: "7%" }}
               type="clear"
               onPress={() => {
                 this.showDatepicker("Arriving");
@@ -312,31 +293,10 @@ class BookingScreen extends Component {
                 </Text>
               }
             />
-            <View
-              style={{
-                paddingTop: "8%",
-              }}
-            >
-              <Text
-                style={{
-                  textAlign: "center",
-                  color: "white",
-                  fontWeight: "bold",
-                  backgroundColor: "rgb(19, 111, 209)",
-                  borderColor: "rgb(19, 111, 209)",
-                  borderRadius: 15,
-                  borderWidth: 1,
-                  overflow: "hidden",
-                  padding: "2%",
-                  fontWeight: "bold",
-                  fontSize: 15,
-                }}
-              >
-                {this.calculateDateDiff()}
-              </Text>
+            <View style={{}}>
+              <Text style={styles.duration}>{this.calculateDateDiff()}</Text>
             </View>
             <Button
-              style={{ paddingVertical: "5%", paddingHorizontal: "7%" }}
               type="clear"
               onPress={() => {
                 this.showDatepicker("Leaving");
@@ -361,80 +321,75 @@ class BookingScreen extends Component {
               }
             />
           </View>
+
           {/* ----------------------------------- Vehicle Info  -----------------------------------*/}
-          <View
-            style={{
-              borderBottomColor: "gray",
-              borderBottomWidth: 1,
-            }}
-          >
-            <Text
-              style={{
-                paddingHorizontal: "2%",
-                paddingVertical: "1%",
-                fontWeight: "bold",
-              }}
-            >
-              Vehicle
-            </Text>
+          <View style={styles.divider}>
+            <View style={styles.spaceHolder} />
+            <View style={styles.spaceHolder} />
+            <Text style={styles.heading}>Vehicle</Text>
+            <View style={styles.spaceHolder} />
+            <View style={styles.spaceHolder} />
+
             <View
               style={{
                 flexDirection: "row",
                 justifyContent: "space-between",
-                paddingHorizontal: "2%",
-                paddingVertical: "3%",
               }}
             >
-              <Text style={{ textAlign: "left" }}>Plate Number</Text>
-              <Text style={{ textAlign: "left" }}>B12UBGS</Text>
+              <Text style={styles.info}>Plate Number</Text>
+              <Text style={styles.info}>B12UBGS</Text>
             </View>
+            <View style={styles.spaceHolder} />
+            <View style={styles.spaceHolder} />
+
             <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                paddingHorizontal: "2%",
-                paddingVertical: "3%",
-              }}
+              style={[
+                styles.row_container,
+                { justifyContent: "space-between" },
+              ]}
             >
-              <Text style={{ textAlign: "left" }}>Type</Text>
-              <Text style={{ textAlign: "left" }}>Sedan</Text>
+              <Text style={styles.info}>Type</Text>
+              <Text style={styles.info}>Sedan</Text>
             </View>
+
+            <View style={styles.spaceHolder} />
+            <View style={styles.spaceHolder} />
           </View>
 
           {/* ----------------------------------- Payment Method  -----------------------------------*/}
-
+          <View style={styles.spaceHolder} />
+          <View style={styles.spaceHolder} />
           <View
-            style={{
-              borderBottomColor: "gray",
-              borderBottomWidth: 1,
-              flexDirection: "row",
-              justifyContent: "space-between",
-              paddingVertical: "5%",
-            }}
+            style={[styles.row_container, { justifyContent: "space-between" }]}
           >
-            <Text style={{ paddingHorizontal: "2%" }}>Payment Method</Text>
-            <Text style={{ paddingHorizontal: "2%" }}>Visa - 8378</Text>
+            <Text style={styles.info}>Payment Method</Text>
+            <Text style={styles.info}>Visa - 8378</Text>
           </View>
+          <View style={styles.spaceHolder} />
+          <View style={styles.spaceHolder} />
 
           {/* ----------------------------------- Price  -----------------------------------*/}
 
+          <View style={styles.divider} />
+          <View style={styles.spaceHolder} />
+          <View style={styles.spaceHolder} />
+
           <View
-            style={{
-              borderBottomColor: "gray",
-              borderBottomWidth: 1,
-              flexDirection: "row",
-              justifyContent: "space-between",
-              paddingVertical: "5%",
-            }}
+            style={[
+              styles.row_container,
+              ,
+              { justifyContent: "space-between" },
+            ]}
           >
-            <Text style={{ paddingHorizontal: "2%" }}>Price</Text>
-            <Text style={{ paddingHorizontal: "2%" }}>AUD 10.00</Text>
+            <Text style={styles.info}>Price</Text>
+            <Text style={styles.info}>AUD 10.00</Text>
           </View>
 
           {/* ----------------------------------- Book Now  -----------------------------------*/}
+          <View style={styles.spaceHolder} />
+          <View style={styles.spaceHolder} />
 
           <Button
-            style={{ padding: "5%" }}
             buttonStyle={{
               borderRadius: 15,
 
