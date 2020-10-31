@@ -20,7 +20,7 @@ class BookingScreen extends Component {
       isModalVisible: false,
       vehicleNumber: "ABC123",
       paymentMethod: "Visa-8378",
-      totalPrice: 10,
+      totalPrice: 0,
       arrivingDate: new Date(),
       leavingDate: new Date(),
       parkingData: this.props.route.params.parkingData,
@@ -42,6 +42,12 @@ class BookingScreen extends Component {
         if (this.state.leavingDate < this.state.arrivingDate) {
           this.setState({ leavingDate: this.state.arrivingDate });
         }
+        // var diffMs = this.state.leavingDate - this.state.arrivingDate;
+        // var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000);
+        // console.log(diffMins);
+        // this.setState({
+        //   totalPrice: (this.state.parkingData.price / 60) * diffMins,
+        // });
       });
     }
     if (this.state.pickingLeaving) {
@@ -49,6 +55,12 @@ class BookingScreen extends Component {
         if (this.state.leavingDate < this.state.arrivingDate) {
           this.setState({ arrivingDate: this.state.leavingDate });
         }
+        // var diffMs = this.state.leavingDate - this.state.arrivingDate;
+        // var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000);
+        // console.log(diffMins);
+        // this.setState({
+        //   totalPrice: (this.state.parkingData.price / 60) * diffMins,
+        // });
       });
     }
   };
@@ -87,7 +99,6 @@ class BookingScreen extends Component {
     let start = this.state.arrivingDate;
     let end = this.state.leavingDate;
     let elapsed = end - start;
-    console.log(elapsed);
     let difference = new Date(elapsed);
 
     // let diff_days = difference.getUTC();
@@ -138,7 +149,7 @@ class BookingScreen extends Component {
                 {"\n"}
               </Text>
               <Text style={{ fontSize: "20px" }}>
-                Total Price:{"\n"} {this.state.totalPrice}
+                Total Price:{"\n"} AUD {this.state.totalPrice.toFixed(2)}
                 {"\n"}
               </Text>
               <Text style={{ fontSize: "20px" }}>
@@ -172,7 +183,17 @@ class BookingScreen extends Component {
               <View
                 style={{ flexDirection: "row", justifyContent: "space-evenly" }}
               >
-                <Button title="Confirm" onPress={this.toggleModal} />
+                <Button
+                  title="Confirm"
+                  onPress={() => {
+                    this.setState(
+                      { isModalVisible: !this.state.isModalVisible },
+                      () => {
+                        this.props.navigation.navigate("Success");
+                      }
+                    );
+                  }}
+                />
                 <Button title="Cancel" onPress={this.toggleModal} />
               </View>
             </View>
@@ -382,7 +403,9 @@ class BookingScreen extends Component {
             ]}
           >
             <Text style={styles.info}>Price</Text>
-            <Text style={styles.info}>AUD 10.00</Text>
+            <Text style={styles.info}>
+              AUD {this.state.totalPrice.toFixed(2)}
+            </Text>
           </View>
 
           {/* ----------------------------------- Book Now  -----------------------------------*/}
@@ -398,9 +421,7 @@ class BookingScreen extends Component {
             onPress={this.toggleModal}
             title={
               <Text style={{ weightcolor: "black", fontWeight: "bold" }}>
-                {this.state.arrivingDate.setTime(
-                  this.state.arrivingDate.getTime() - 1000 * 60
-                ) > new Date()
+                {this.state.arrivingDate.getTime() - 1000 * 60 > new Date()
                   ? "Book Now"
                   : "Pay Now"}
               </Text>

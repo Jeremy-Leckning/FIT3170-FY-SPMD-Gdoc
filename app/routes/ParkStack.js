@@ -4,6 +4,7 @@ import ParkScreen from "../screens/ParkScreen";
 import DetailScreen from "../screens/DetailScreen";
 import BookingScreen from "../screens/BookingScreen";
 import carParkData from "../data/carparkLocation";
+import SuccessScreen from "../screens/SuccessScreen";
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ class ParkStack extends Component {
         />
         <Stack.Screen name="Details" component={DetailScreen} />
         <Stack.Screen name="Book" component={BookingScreen} />
+        <Stack.Screen name="Success" component={SuccessScreen} />
       </Stack.Navigator>
     );
   }

@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, TouchableOpacity, Image } from "react-native";
 import { SearchBar, Card } from "react-native-elements";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
+import { SafeAreaView } from "react-navigation";
 import carParkData from "../data/carparkLocation";
 
 class ParkScreen extends Component {
@@ -206,7 +207,11 @@ class ParkScreen extends Component {
         </View>
       );
     } else {
-      return <Text>Loading...</Text>;
+      return (
+        <SafeAreaView>
+          <Text style={{ textAlign: "center" }}>Loading...</Text>
+        </SafeAreaView>
+      );
     }
   }
 }
